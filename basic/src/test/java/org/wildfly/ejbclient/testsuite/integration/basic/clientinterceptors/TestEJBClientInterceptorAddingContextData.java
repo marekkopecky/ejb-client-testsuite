@@ -54,6 +54,7 @@ public class TestEJBClientInterceptorAddingContextData<T> implements EJBClientIn
             System.out.println(this.getClass().getName() + " handing an invocation");
             ejbClientInvocationContext.getContextData().put(key, value);
         }
+        ejbClientInvocationContext.addReturnedContextDataKey(key);
         ejbClientInvocationContext.sendRequest();
     }
 

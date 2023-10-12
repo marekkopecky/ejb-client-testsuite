@@ -34,7 +34,6 @@ import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -47,7 +46,6 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 @RunAsClient
-@Ignore //FIXME
 public class ClientInterceptorAddedProgrammaticallyTestCase {
 
     public static final String MODULE_NAME = "client-interceptor";
