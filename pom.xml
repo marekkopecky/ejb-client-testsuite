@@ -44,7 +44,7 @@
 
         <groupId.ee.bom>org.wildfly.bom</groupId.ee.bom>
         <artifactId.ee.bom>wildfly-ee</artifactId.ee.bom>
-        <version.ee.bom>EJB-CLIENT-TESTSUITE</version.ee.bom>
+        <version.ee.bom>31.0.1.Final</version.ee.bom>
         <groupId.ejb.client.bom>org.wildfly</groupId.ejb.client.bom>
         <artifactId.ejb.client.bom>wildfly-ejb-client-bom</artifactId.ejb.client.bom>
         <version.ejb.client.bom>EJB-CLIENT-TESTSUITE</version.ejb.client.bom>
