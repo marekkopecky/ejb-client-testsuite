@@ -291,7 +291,7 @@
             </build>
             <dependencies>
                 <dependency>
-                    <groupId>org.jboss.eap.qe</groupId>
+                    <groupId>org.jboss.ejb-multinode-tests</groupId>
                     <artifactId>jboss-client</artifactId>
                     <version>1.0.0</version>
                     <type>jar</type>
