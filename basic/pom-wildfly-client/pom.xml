@@ -46,7 +46,7 @@
         <connector>http-remoting</connector>
         <context.type>wildfly-naming-client</context.type>
         <byteman.args>
-            -javaagent:${org.jboss.byteman:byteman:jar}=script:${project.basedir}/byteman/bytemanscript.btm,prop:org.jboss.byteman.transform.all=true,sys:${org.jboss.byteman:byteman:jar},boot:${org.jboss.byteman:byteman:jar}
+            -javaagent:${org.jboss.byteman:byteman:jar}=script:${project.basedir}/../byteman/bytemanscript.btm,prop:org.jboss.byteman.transform.all=true,sys:${org.jboss.byteman:byteman:jar},boot:${org.jboss.byteman:byteman:jar}
         </byteman.args>
         <security.manager.client.args/>
         <!-- This value will become "-secmgr" if security.manager.server profile is active.
@@ -219,6 +219,20 @@
     </dependencies>
 
     <build>
+        <directory>${project.basedir}/../target</directory>
+        <sourceDirectory>${project.basedir}/../src/main/java</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/../src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/../src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/../src/test/resources</directory>
+            </testResource>
+        </testResources>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -253,15 +267,15 @@
                     <server-config>${jboss.config.file}</server-config>
                     <startupTimeout>${server.startup.timeout}</startupTimeout>
                     <scripts>
-                        <script>${project.basedir}/setup/configure-self-remote-outbound-connection-elytron.cli</script>
-                        <script>${project.basedir}/setup/configure-logging.cli</script>
-                        <script>${project.basedir}/setup/prepare-jms-destinations.cli</script>
-                        <script>${project.basedir}/setup/setup-elytron.cli</script>
-                        <script>${project.basedir}/setup/prepare-http-invoker-elytron.cli</script>
-                        <script>${project.basedir}/setup/prepare-https-connector-elytron.cli</script>
-                        <script>${project.basedir}/setup/prepare-remoting-connector-elytron.cli</script>
-                        <script>${project.basedir}/setup/prepare-remoting-ssl-connector-elytron.cli</script>
-                        <script>${project.basedir}/setup/allow-all-remote-connectors-ejb.cli</script>
+                        <script>${project.basedir}/../setup/configure-self-remote-outbound-connection-elytron.cli</script>
+                        <script>${project.basedir}/../setup/configure-logging.cli</script>
+                        <script>${project.basedir}/../setup/prepare-jms-destinations.cli</script>
+                        <script>${project.basedir}/../setup/setup-elytron.cli</script>
+                        <script>${project.basedir}/../setup/prepare-http-invoker-elytron.cli</script>
+                        <script>${project.basedir}/../setup/prepare-https-connector-elytron.cli</script>
+                        <script>${project.basedir}/../setup/prepare-remoting-connector-elytron.cli</script>
+                        <script>${project.basedir}/../setup/prepare-remoting-ssl-connector-elytron.cli</script>
+                        <script>${project.basedir}/../setup/allow-all-remote-connectors-ejb.cli</script>
                     </scripts>
                 </configuration>
             </plugin>
@@ -446,9 +460,9 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <connector>${connector}</connector>
-                                <javax.net.ssl.trustStore>${project.basedir}/files/ssl/client.keystore
+                                <javax.net.ssl.trustStore>${project.basedir}/../files/ssl/client.keystore
                                 </javax.net.ssl.trustStore>
-                                <javax.net.ssl.keyStore>${project.basedir}/files/ssl/client.keystore
+                                <javax.net.ssl.keyStore>${project.basedir}/../files/ssl/client.keystore
                                 </javax.net.ssl.keyStore>
                                 <javax.net.ssl.trustStorePassword>abcdef</javax.net.ssl.trustStorePassword>
                                 <javax.net.ssl.keyStorePassword>abcdef</javax.net.ssl.keyStorePassword>
@@ -480,16 +494,16 @@
                                 <configuration>
                                     <target>
                                         <echo message="Copying necessary file to server distribution."/>
-                                        <copy file="${project.basedir}/files/ssl/server.keystore"
+                                        <copy file="${project.basedir}/../files/ssl/server.keystore"
                                               overwrite="true"
                                               verbose="true"
                                               tofile="${server.home}/standalone/configuration/server.keystore"/>
                                         <copy todir="${server.home}/standalone/configuration/" verbose="true"
                                               overwrite="true">
-                                            <fileset dir="${project.basedir}/files/user"/>
+                                            <fileset dir="${project.basedir}/../files/user"/>
                                         </copy>
                                         <copy todir="${server.home}/modules/" verbose="true" overwrite="true">
-                                            <fileset dir="${project.basedir}/files/modules"/>
+                                            <fileset dir="${project.basedir}/../files/modules"/>
                                         </copy>
                                     </target>
                                 </configuration>
@@ -512,7 +526,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <outputDirectory>${project.basedir}/files/modules/my-awesome-ejb-module/main
+                            <outputDirectory>${project.basedir}/../files/modules/my-awesome-ejb-module/main
                             </outputDirectory>
                             <includes>
                                 <include>ejbjar/*</include>
@@ -528,7 +542,7 @@
                         <configuration>
                             <filesets>
                                 <fileset>
-                                    <directory>${project.basedir}/files/modules/my-awesome-ejb-module/main</directory>
+                                    <directory>${project.basedir}/../files/modules/my-awesome-ejb-module/main</directory>
                                     <includes>
                                         <include>**/*.jar</include>
                                     </includes>
